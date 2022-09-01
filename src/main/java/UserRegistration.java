@@ -1,65 +1,65 @@
 import java.util.regex.Pattern;
 
 public class UserRegistration {
-    public static String isValidFirstName(String firstName) {
+    public static boolean isValidFirstName(String firstName) {
         Pattern pattern = Pattern.compile("^[A-Z][a-zA-z0-9]{2,}$");
 /*		Regex to check valid username and compile the regex
 		Pattern class contains matcher() method to find matching between given username
 		and regular expression.*/
         if(pattern.matcher(firstName).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
-//		Return happy if the firstname matched the Regex
+            throw new UserRegistrationException("Invalid First Name ", UserRegistrationException.ExceptionType.INVALID_FIRST_NAME);
+
     }
-    public static String isValidLastName(String lastName) {
+    public static boolean isValidLastName(String lastName) {
         Pattern pattern = Pattern.compile("^[A-Z][a-zA-z0-9]{2,}$");
         if(pattern.matcher(lastName).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Last Name ", UserRegistrationException.ExceptionType.INVALID_LAST_NAME);
     }
-    public static String isValidPhoneNo(String phoneNo) {
+    public static boolean isValidPhoneNo(String phoneNo) {
         Pattern pattern = Pattern.compile("^[0-9]{1,2} \\d{10}$");
         if(pattern.matcher(phoneNo).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Phone number ", UserRegistrationException.ExceptionType.INVALID_PHONE_NUMBER);
     }
-    public static String isValidEmail(String email) {
+    public static boolean isValidEmail(String email) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?");
         if(pattern.matcher(email).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Email address ", UserRegistrationException.ExceptionType.INVALID_EMAIL);
     }
-    public static String  isValidPassword1(String password1) {
+    public static boolean  isValidPassword1(String password1) {
         Pattern pattern = Pattern.compile("^[a-zA-z0-9]{8,}$");
         if(pattern.matcher(password1).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Password1 ", UserRegistrationException.ExceptionType.INVALID_PASSWORD);
     }
-    public static String isValidPassword2(String password2) {
+    public static boolean isValidPassword2(String password2) {
         Pattern pattern = Pattern.compile("^[A-Z][a-zA-z0-9]{7,}$");
         if(pattern.matcher(password2).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Password2 ", UserRegistrationException.ExceptionType.INVALID_PASSWORD);
     }
-    public static String isValidPassword3(String password3) {
+    public static boolean isValidPassword3(String password3) {
         Pattern pattern = Pattern.compile("^[A-Z][a-zA-z1-9]{6,}[1-9]+$");
         if(pattern.matcher(password3).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Password3", UserRegistrationException.ExceptionType.INVALID_PASSWORD);
     }
-    public static String isValidPassword4(String password4) {
+    public static boolean isValidPassword4(String password4) {
         Pattern pattern = Pattern.compile("^[A-Z][a-zA-z1-9]{5,}[@$^][1-9]+$");
         if(pattern.matcher(password4).matches()){
-            return "Happy";
+            return true;
         }else
-            return "Sad";
+            throw new UserRegistrationException("Invalid Password4 ", UserRegistrationException.ExceptionType.INVALID_PASSWORD);
     }
     public static boolean isEmailValidation(String email) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?");
